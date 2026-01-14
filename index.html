@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #eaeaea;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    p {
+      text-align: center;
+      color: #aaa;
+      margin-top: 0;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      background: #1c1c1c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2ecc71;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .post {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+    .reactions {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Eco</h1>
+<p>Di algo. Alguien puede leerlo.</p>
+
+<textarea id="mensaje" placeholder="Escribe tu mensaje..."></textarea>
+<button onclick="publicar()">Publicar</button>
+
+<div id="feed"></div>
+
+<script>
+  function publicar() {
+    const texto = document.getElementById("mensaje").value.trim();
+    if (!texto) return;
+
+    const post = document.createElement("div");
+    post.className = "post";
+    post.innerHTML = `
+      ${texto}
+      <div class="reactions">👍 0 ❤️ 0 😢 0</div>
+    `;
+
+    document.getElementById("feed").prepend(post);
+    document.getElementById("mensaje").value = "";
+  }
+</script>
+
+</body>
+</html>
